@@ -42,7 +42,7 @@ const ContactForm = () => {
     setStatus({ loading: true, success: null, error: null });
 
     try {
-      const response = await fetch('http://localhost:5168/api/contact', {
+      const response = await fetch('aurexcode-api-bzdwf5dsa6hzfkbc.brazilsouth-01.azurewebsites.net', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
