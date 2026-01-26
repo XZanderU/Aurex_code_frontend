@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aurexcode.com/sitemap.xml
+
