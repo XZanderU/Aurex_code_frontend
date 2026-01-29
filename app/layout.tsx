@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google"; // O la fuente que prefieras
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar"; 
 import { cn } from "@/lib/utils";
@@ -26,6 +26,12 @@ export const metadata: Metadata = {
   authors: [{ name: "AurexCode" }],
   creator: "AurexCode",
   metadataBase: new URL("https://aurexcode.com"),
+
+  // 👉 VERIFICACIÓN GOOGLE SEARCH CONSOLE (AGREGADO)
+  verification: {
+    google: "QIbFo3yX6ULukp7NjI3IT_mlkHmOjO3zKABsgGCl1wU",
+  },
+
   openGraph: {
     title: "AurexCode | Desarrollo Web y Soluciones Digitales",
     description:
@@ -41,7 +47,6 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function RootLayout({
   children,
 }: {
@@ -56,11 +61,8 @@ export default function RootLayout({
         )}
       >
         <Navbar />
-        
         <main>{children}</main>
-
       </body>
-      
     </html>
   );
 }
