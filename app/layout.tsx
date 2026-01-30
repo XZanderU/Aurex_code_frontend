@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
-import Navbar from "@/components/Navbar"; 
+import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
+
+/* 👉 cambia esto por tu ID real de Google Tag */
+const GA_ID = "AW-XXXXXXXXXX";
 
 export const metadata: Metadata = {
   title: {
@@ -27,7 +31,6 @@ export const metadata: Metadata = {
   creator: "AurexCode",
   metadataBase: new URL("https://aurexcode.com"),
 
-  // 👉 VERIFICACIÓN GOOGLE SEARCH CONSOLE (AGREGADO)
   verification: {
     google: "QIbFo3yX6ULukp7NjI3IT_mlkHmOjO3zKABsgGCl1wU",
   },
@@ -41,6 +44,7 @@ export const metadata: Metadata = {
     locale: "es_ES",
     type: "website",
   },
+
   robots: {
     index: true,
     follow: true,
@@ -60,6 +64,21 @@ export default function RootLayout({
           inter.className
         )}
       >
+        {/* 🔥 Google Tag (gtag.js) */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-ads-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
+
         <Navbar />
         <main>{children}</main>
       </body>

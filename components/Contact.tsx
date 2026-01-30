@@ -38,48 +38,49 @@ const ContactForm = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus({ loading: true, success: null, error: null });
+  e.preventDefault();
+  setStatus({ loading: true, success: null, error: null });
 
-    try {
-      const response = await fetch('https://aurexcode-api-bzdwf5dsa6hzfkbc.brazilsouth-01.azurewebsites.net/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-
-      // Manejo inteligente de la respuesta para evitar "Unexpected end of JSON input"
-      if (!response.ok) {
-        const rawError = await response.text(); // Leemos primero como texto plano
-        let message = `Error del servidor (${response.status})`;
-
-        try {
-          // Intentamos parsear a JSON solo si el servidor envió un objeto de error
-          const jsonError = JSON.parse(rawError);
-          message = jsonError.title || jsonError.message || message;
-        } catch {
-          // Si no es JSON (es un error 500 genérico de Azure), usamos el texto o el mensaje por defecto
-          console.error("Detalle técnico del error:", rawError);
-        }
-        
-        throw new Error(message);
+  try {
+    const response = await fetch(
+      "https://alexanderurrea.app.n8n.cloud/webhook-test/Contactform", // 👈 URL de tu webhook n8n
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nombre: formData.nombre,
+          correo: formData.correo,
+          empresa: formData.empresa,
+          mensaje: formData.mensaje,
+        }),
       }
+    );
 
-      setStatus({
-        loading: false,
-        success: '¡Mensaje enviado con éxito!',
-        error: null
-      });
-
-      setFormData({ nombre: '', correo: '', empresa: '', mensaje: '' });
-    } catch (err: any) {
-      setStatus({
-        loading: false,
-        success: null,
-        error: err.message || 'Error de conexión'
-      });
+    if (!response.ok) {
+      throw new Error(`Error (${response.status})`);
     }
-  };
+
+    setStatus({
+      loading: false,
+      success: "¡Mensaje enviado con éxito!",
+      error: null,
+    });
+
+    setFormData({
+      nombre: "",
+      correo: "",
+      empresa: "",
+      mensaje: "",
+    });
+  } catch (err: any) {
+    setStatus({
+      loading: false,
+      success: null,
+      error: "No se pudo enviar el mensaje. Intenta nuevamente.",
+    });
+  }
+};
+
 
   return (
     <section id="contact" className="relative py-32 bg-transparent overflow-hidden px-6">
