@@ -43,7 +43,7 @@ const ContactForm = () => {
 
   try {
     const response = await fetch(
-      "https://alexanderurrea.app.n8n.cloud/webhook-test/Contactform", // 👈 URL de tu webhook n8n
+      "https://alexanderurrea.app.n8n.cloud/webhook/ContactForm", // 👈 URL de tu webhook n8n
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
