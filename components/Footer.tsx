@@ -92,7 +92,7 @@ const Footer = () => {
                 GitHub
                 <a href="https://www.instagram.com/dev.xander/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-slate-400 hover:text-orange-50 transition-colors text-sm group">
                 <div className="p-2 rounded-lg bg-slate-900 border border-white/5 group-hover:border-orange-500/50">
-                  <FaInstagram size={25} />
+                  <FaInstagram size={16} />
                 </div>
                 Instagram
               </a>
