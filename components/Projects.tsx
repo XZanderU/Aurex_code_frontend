@@ -40,7 +40,7 @@ const PROJECTS: Project[] = [
     desc: "Interfaz moderna y responsiva orientada a la conversión, desarrollada con React, JavaScript y Tailwind CSS.",
     img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
     size: "md:col-span-1 md:row-span-1",
-    link: "https://github.com/XZanderU"
+    link: "https://virtual-r-lake.vercel.app/"
   },
   {
     id: 4,
