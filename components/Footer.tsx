@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope, FaInstagram } from "react-icons/fa";
 import { RiArrowRightUpLine } from "react-icons/ri";
 
 const Footer = () => {
@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <footer className="relative bg-transparent pt-24 pb-12 px-6 overflow-hidden border-t border-white/5">
       {/* Glow decorativo de fondo */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-orange-500/50 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-linear-to-r from-transparent via-orange-500/50 to-transparent" />
       
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
@@ -90,8 +90,14 @@ const Footer = () => {
                   <FaGithub size={16} />
                 </div>
                 GitHub
+                <a href="https://www.instagram.com/dev.xander/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-slate-400 hover:text-orange-50 transition-colors text-sm group">
+                <div className="p-2 rounded-lg bg-slate-900 border border-white/5 group-hover:border-orange-500/50">
+                  <FaInstagram size={25} />
+                </div>
+                Instagram
               </a>
-            </div>
+              </a>
+              </div>
           </div>
         </div>
 
