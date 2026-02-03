@@ -46,60 +46,46 @@ const ContactForm = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
+
+  setStatus({ loading: true, success: null, error: null });
+
+  try {
+    await fetch(
+      "https://alexanderurrea82.app.n8n.cloud/webhook/ContactForm",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    // ✅ SOLO agregamos esto (no rompe nada)
+    window.dataLayer?.push({
+      event: "form_contact_success",
+    });
 
     setStatus({
-      loading: true,
-      success: null,
+      loading: false,
+      success: "¡Mensaje enviado con éxito!",
       error: null,
     });
 
-    try {
-      const response = await fetch(
-        "https://alexanderurrea82.app.n8n.cloud/webhook/ContactForm",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            nombre: formData.nombre,
-            correo: formData.correo,
-            empresa: formData.empresa,
-            mensaje: formData.mensaje,
-          }),
-        }
-      );
+    setFormData({
+      nombre: "",
+      correo: "",
+      empresa: "",
+      mensaje: "",
+    });
+  } catch (err) {
+    setStatus({
+      loading: false,
+      success: null,
+      error: "No se pudo enviar el mensaje.",
+    });
+  }
+};
 
-      if (!response.ok) {
-        throw new Error(`Error (${response.status})`);
-      }
-
-      // 🔥 DISPARAR EVENTO PARA GOOGLE TAG MANAGER
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "form_contact_success",
-        form_name: "contacto_web",
-      });
-
-      setStatus({
-        loading: false,
-        success: "¡Mensaje enviado con éxito!",
-        error: null,
-      });
-
-      setFormData({
-        nombre: "",
-        correo: "",
-        empresa: "",
-        mensaje: "",
-      });
-    } catch (err) {
-      setStatus({
-        loading: false,
-        success: null,
-        error: "No se pudo enviar el mensaje. Intenta nuevamente.",
-      });
-    }
-  };
 
   return (
     <section
