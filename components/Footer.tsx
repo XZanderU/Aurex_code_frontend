@@ -32,15 +32,21 @@ const Footer = () => {
 
             <div className="flex flex-wrap gap-4">
               {/* Botón WhatsApp */}
-              <a 
-                href={`https://wa.me/${whatsappNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-3 rounded-xl font-bold text-sm transition-all hover:-translate-y-1 shadow-lg shadow-emerald-900/20"
-              >
-                <FaWhatsapp size={18} />
-                WhatsApp
-              </a>
+              <a
+  href={`https://wa.me/${whatsappNumber}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={() => {
+    window.dataLayer?.push({
+      event: "whatsapp_click",
+      source: "footer_button",
+    });
+  }}
+>
+  <FaWhatsapp size={18} className="mr-2" />
+  WhatsApp
+</a>
+
 
               {/* Botón Email */}
               <a 
@@ -119,15 +125,22 @@ const Footer = () => {
       </div>
 
       {/* Botón Flotante de WhatsApp (Opcional, aparece en la esquina inferior derecha) */}
-      <a 
-        href={`https://wa.me/${whatsappNumber}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-50 p-4 bg-emerald-500 text-white rounded-full shadow-2xl hover:bg-emerald-400 hover:scale-110 transition-all active:scale-95 md:flex hidden"
-        aria-label="Contactar por WhatsApp"
-      >
-        <FaWhatsapp size={28} />
-      </a>
+      <a
+  href={`https://wa.me/${whatsappNumber}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={() => {
+    window.dataLayer?.push({
+      event: "whatsapp_click",
+      source: "floating_button",
+    });
+  }}
+  className="fixed bottom-8 right-8 z-50 p-4 bg-emerald-500 text-white rounded-full shadow-2xl hover:bg-emerald-400 hover:scale-110 transition-all active:scale-95 md:flex hidden"
+  aria-label="Contactar por WhatsApp"
+>
+  <FaWhatsapp size={28} />
+</a>
+
     </footer>
   );
 };
