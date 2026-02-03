@@ -37,9 +37,11 @@ const Footer = () => {
   target="_blank"
   rel="noopener noreferrer"
   onClick={() => {
-    window.dataLayer?.push({
+    window.dataLayer = window.dataLayer || [];
+
+    window.dataLayer.push({
       event: "whatsapp_click",
-      source: "footer_button",
+      source: "floating_button",
     });
   }}
 >
@@ -130,7 +132,9 @@ const Footer = () => {
   target="_blank"
   rel="noopener noreferrer"
   onClick={() => {
-    window.dataLayer?.push({
+    window.dataLayer = window.dataLayer || [];
+
+    window.dataLayer.push({
       event: "whatsapp_click",
       source: "floating_button",
     });
@@ -140,6 +144,7 @@ const Footer = () => {
 >
   <FaWhatsapp size={28} />
 </a>
+
 
     </footer>
   );
