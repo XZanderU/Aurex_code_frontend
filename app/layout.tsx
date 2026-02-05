@@ -7,8 +7,9 @@ import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
-/* 👉 TU ID REAL DE GOOGLE TAG MANAGER */
+/* 👉 IDs DE SEGUIMIENTO */
 const GTM_ID = "GTM-MLS7RSQJ";
+const GOOGLE_ADS_ID = "AW-17918400821"; // ID extraído de tu imagen
 
 export const metadata: Metadata = {
   title: {
@@ -59,6 +60,20 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth">
       <head>
+        {/* 🔥 Google Ads Tag (gtag.js) - Agregado según tu imagen */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GOOGLE_ADS_ID}');
+          `}
+        </Script>
+
         {/* 🔥 Google Tag Manager */}
         <Script id="gtm-head" strategy="afterInteractive">
           {`
@@ -77,7 +92,7 @@ export default function RootLayout({
           inter.className
         )}
       >
-        {/* 🔥 fallback noscript */}
+        {/* 🔥 GTM fallback noscript */}
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
@@ -93,4 +108,3 @@ export default function RootLayout({
     </html>
   );
 }
-
