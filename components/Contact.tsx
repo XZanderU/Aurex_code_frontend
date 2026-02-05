@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 declare global {
   interface Window {
     dataLayer: any[];
+    gtag: (...args: any[]) => void; // Agregamos gtag al tipo global
   }
 }
 
@@ -46,46 +47,54 @@ const ContactForm = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  setStatus({ loading: true, success: null, error: null });
+    setStatus({ loading: true, success: null, error: null });
 
-  try {
-    await fetch(
-      "https://alexanderurrea82.app.n8n.cloud/webhook/ContactForm",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+    try {
+      await fetch(
+        "https://alexanderurrea82.app.n8n.cloud/webhook/ContactForm",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      // ✅ 1. Evento para Google Tag Manager
+      window.dataLayer?.push({
+        event: "form_contact_success",
+      });
+
+      // ✅ 2. Conversión Directa para Google Ads (Sacado de tu captura)
+      if (typeof window !== "undefined" && window.gtag) {
+        window.gtag('event', 'conversion', {
+            'send_to': 'AW-17918400821/qQEvCIClg_IbELWyloBC',
+            'value': 1.0,
+            'currency': 'COP'
+        });
       }
-    );
 
-    // ✅ SOLO agregamos esto (no rompe nada)
-    window.dataLayer?.push({
-      event: "form_contact_success",
-    });
+      setStatus({
+        loading: false,
+        success: "¡Mensaje enviado con éxito!",
+        error: null,
+      });
 
-    setStatus({
-      loading: false,
-      success: "¡Mensaje enviado con éxito!",
-      error: null,
-    });
-
-    setFormData({
-      nombre: "",
-      correo: "",
-      empresa: "",
-      mensaje: "",
-    });
-  } catch (err) {
-    setStatus({
-      loading: false,
-      success: null,
-      error: "No se pudo enviar el mensaje.",
-    });
-  }
-};
-
+      setFormData({
+        nombre: "",
+        correo: "",
+        empresa: "",
+        mensaje: "",
+      });
+    } catch (err) {
+      setStatus({
+        loading: false,
+        success: null,
+        error: "No se pudo enviar el mensaje.",
+      });
+    }
+  };
 
   return (
     <section
