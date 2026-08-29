@@ -1,5 +1,10 @@
 import { openai } from "@ai-sdk/openai";
-import { convertToModelMessages, streamText, type UIMessage, } from "ai";
+import {
+  convertToModelMessages,
+  streamText,
+  type UIMessage,
+} from "ai";
+
 import { aurexcodeSystemPrompt } from "@/lib/ai/prompt";
 
 export const maxDuration = 30;
@@ -10,13 +15,20 @@ export async function POST(req: Request) {
 
     const result = streamText({
       model: openai("gpt-5.6-luna"),
+
       system: aurexcodeSystemPrompt,
+
       messages: await convertToModelMessages(messages),
+
+      onError({ error }) {
+        console.error("❌ ERROR DE OPENAI/AI SDK:");
+        console.error(error);
+      },
     });
 
     return result.toUIMessageStreamResponse();
   } catch (error) {
-    console.error("Error en /api/chat:", error);
+    console.error("❌ ERROR EN /api/chat:", error);
 
     return new Response(
       JSON.stringify({
