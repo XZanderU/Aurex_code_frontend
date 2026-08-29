@@ -1,5 +1,6 @@
 import { openai } from "@ai-sdk/openai";
-import { convertToModelMessages, streamText, type UIMessage } from "ai";
+import { convertToModelMessages, streamText, type UIMessage, } from "ai";
+import { aurexcodeSystemPrompt } from "@/lib/ai/prompt";
 
 export const maxDuration = 30;
 
@@ -9,32 +10,7 @@ export async function POST(req: Request) {
 
     const result = streamText({
       model: openai("gpt-5.6-luna"),
-      system: `
-        Eres el asistente virtual de AurexCode.
-
-        AurexCode es una empresa de desarrollo de software y soluciones
-        digitales especializada en desarrollo web, aplicaciones,
-        automatización, integraciones, Odoo e inteligencia artificial.
-
-        Tu función en esta primera versión es conversar con los visitantes
-        y ayudarlos a explicar qué problema quieren resolver.
-
-        Sé profesional, claro, directo y natural.
-        No inventes servicios, clientes, precios ni características que no
-        conozcas.
-
-        Cuando el visitante explique una necesidad de negocio, intenta
-        comprender:
-        - qué problema quiere resolver,
-        - qué necesita construir o automatizar,
-        - qué sistemas utiliza actualmente,
-        - y cuál sería el resultado esperado.
-
-        No vendas agresivamente.
-        Primero entiende el problema.
-
-        Responde siempre en español, salvo que el usuario utilice otro idioma.
-      `,
+      system: aurexcodeSystemPrompt,
       messages: await convertToModelMessages(messages),
     });
 
