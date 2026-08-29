@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Aurexchat from "@/components/Aurexchat";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -104,6 +105,7 @@ export default function RootLayout({
 
         <Navbar />
         <main>{children}</main>
+        <Aurexchat />
       </body>
     </html>
   );
