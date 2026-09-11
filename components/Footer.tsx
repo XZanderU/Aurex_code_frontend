@@ -93,7 +93,7 @@ const Footer = () => {
                 </div>
                 LinkedIn
               </a>
-              <a href="https://github.com/XZanderU" className="flex items-center gap-3 text-slate-400 hover:text-orange-50 transition-colors text-sm group">
+              <a href="https://github.com/XZanderU" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-slate-400 hover:text-orange-50 transition-colors text-sm group">
                 <div className="p-2 rounded-lg bg-slate-900 border border-white/5 group-hover:border-orange-500/50">
                   <FaGithub size={16} />
                 </div>
