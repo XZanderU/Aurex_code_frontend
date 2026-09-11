@@ -45,7 +45,7 @@ const Footer = () => {
     });
   }}
 >
-  <FaWhatsapp size={18} className="mr-2" />
+  <FaWhatsapp size={18} className="mr-2 bg-emerald-500 text-white rounded-full shadow-2xl hover:bg-emerald-400 hover:scale-110/>
   WhatsApp
 </a>
 
