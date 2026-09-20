@@ -4,9 +4,9 @@ import nodemailer from 'nodemailer';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { Nombre, Correo, Empresa, Mensaje } = body;
+    const { nombre, correo, empresa, mensaje } = body;
 
-    if (!Nombre || !Correo || !Mensaje) {
+    if (!nombre || !correo || !mensaje) {
       return NextResponse.json(
         { message: 'Faltan campos obligatorios' },
         { status: 400 }
@@ -24,15 +24,15 @@ export async function POST(request: Request) {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: 'johnalexanderurreagarcia@gmail.com', //  correo
-      replyTo: Correo,
-      subject: `Nuevo lead en AurexCode: ${Nombre}`,
+      replyTo: correo,
+      subject: `Nuevo lead en AurexCode: ${nombre}`,
       html: `
         <div style="font-family: sans-serif; color: #333;">
           <h2>Nuevo mensaje de contacto</h2>
-          <p><strong>Nombre:</strong> ${Nombre}</p>
-          <p><strong>Correo:</strong> ${Correo}</p>
-          <p><strong>Empresa:</strong> ${Empresa || 'No especificada'}</p>
-          <p><strong>Mensaje:</strong><br/>${Mensaje}</p>
+          <p><strong>Nombre:</strong> ${nombre}</p>
+          <p><strong>Correo:</strong> ${correo}</p>
+          <p><strong>Empresa:</strong> ${empresa || 'No especificada'}</p>
+          <p><strong>Mensaje:</strong><br/>${mensaje}</p>
         </div>
       `,
     };
