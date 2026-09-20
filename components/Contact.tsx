@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 declare global {
   interface Window {
     dataLayer: any[];
-    gtag: (...args: any[]) => void; // Agregamos gtag al tipo global
+    gtag: (...args: any[]) => void;
   }
 }
 
@@ -52,21 +52,25 @@ const ContactForm = () => {
     setStatus({ loading: true, success: null, error: null });
 
     try {
-      await fetch(
-        "https://alexanderurrea82.app.n8n.cloud/webhook/ContactForm",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
+      // 1. Actualización: Apuntar al Route Handler de Next.js
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      // 2. Nueva validación: fetch solo entra al 'catch' si no hay internet. 
+      // Si Vercel devuelve un error 500, hay que forzar el error manualmente.
+      if (!response.ok) {
+        throw new Error("Error en el servidor al enviar el correo");
+      }
 
       // ✅ 1. Evento para Google Tag Manager
       window.dataLayer?.push({
         event: "form_contact_success",
       });
 
-      // ✅ 2. Conversión Directa para Google Ads (Sacado de tu captura)
+      // ✅ 2. Conversión Directa para Google Ads
       if (typeof window !== "undefined" && window.gtag) {
         window.gtag('event', 'conversion', {
             'send_to': 'AW-17918400821/qQEvCIClg_IbELWyloBC',
