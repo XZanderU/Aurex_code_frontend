@@ -30,13 +30,13 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 w-full z-[100] transition-all duration-500 border-b",
+        "fixed top-0 left-0 w-full z-100 transition-all duration-500 border-b",
         scrolled
           ? "bg-blue-950/60 backdrop-blur-xl backdrop-saturate-150 border-white/10 py-4 shadow-lg"
           : "bg-transparent border-transparent py-6"
       )}
     >
-      <div className="w-full max-w-[1920px] mx-auto px-6 md:px-12 flex justify-between items-center">
+      <div className="w-full max-w-480 mx-auto px-6 md:px-12 flex justify-between items-center">
         
         {/* LOGO */}
         <Link href="#hero" className="relative z-50 flex items-center gap-2 group">

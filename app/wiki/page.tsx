@@ -9,7 +9,7 @@ export default function Wiki() {
         {/* Navegación superior */}
         <nav className="mb-12 flex items-center justify-between">
           <Link 
-            href="/" 
+            href="/#hero" 
             className="flex items-center gap-2 text-sm font-medium text-blue-400 transition hover:text-blue-300"
           >
             <ArrowLeft size={16} />
