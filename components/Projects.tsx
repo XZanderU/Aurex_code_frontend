@@ -29,7 +29,7 @@ const PROJECTS: Project[] = [
     title: "User Management API",
     category: "Backend / .NET",
     desc: "API REST robusta desarrollada con C#, Entity Framework Core y SQLite para la gestión escalable de usuarios.",
-    img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc48?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YyVDMyVCM2RpZ298ZW58MHx8MHx8fDA%3D",
     size: "md:col-span-1 md:row-span-1",
     link: "https://github.com/XZanderU"
   },
@@ -50,13 +50,22 @@ const PROJECTS: Project[] = [
     img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
     size: "md:col-span-2 md:row-span-1",
     link: "https://github.com/XZanderU"
+  },
+  {
+    id: 5,
+    title: "Social Media Manager",
+    category: "UX / Motion Design",
+    desc: "Plataforma personal de alto impacto visual utilizando animaciones fluidas y una estética premium.",
+    img: "https://images.unsplash.com/photo-1784729553996-1cdaf53711a4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    size: "md:col-span-2 md:row-span-1",
+    link: "https://social-media-manager-rosy.vercel.app/"
   }
 ];
 
 const Projects = () => {
   return (
     <section id="projects" className="py-24 bg-transparent px-6 overflow-hidden">
-      <div className="max-w-[1920px] mx-auto md:px-12">
+      <div className="max-w-480 mx-auto md:px-12">
         
         {/* HEADER SECTION */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
@@ -116,7 +125,7 @@ const Projects = () => {
                 </p>
 
                 <div className="mt-6 flex items-center gap-2 text-white font-bold text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity delay-100">
-                  <span className="h-[1px] w-8 bg-orange-500 group-hover:w-12 transition-all duration-500"></span>
+                  <span className="h-px w-8 bg-orange-500 group-hover:w-12 transition-all duration-500"></span>
                   Ver Repositorio
                 </div>
               </div>
