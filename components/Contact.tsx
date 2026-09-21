@@ -52,7 +52,7 @@ const ContactForm = () => {
     setStatus({ loading: true, success: null, error: null });
 
     try {
-      // 1. Actualización: Apuntar al Route Handler de Next.js
+      // 1. Actualización: Apuntar al Route Handler de Next.js (forzar deploy)
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
