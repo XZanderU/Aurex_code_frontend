@@ -48,15 +48,14 @@ export default function AurexChat() {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-50">
+    <div className="fixed bottom-24 right-8 z-50">
       {!open && (
         <button
           type="button"
           onClick={() => setOpen(true)}
           aria-label="Abrir asistente AurexCode"
-          className="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-slate-900 text-white shadow-2xl transition hover:scale-105 hover:bg-slate-800"
-        >
-          <MessageCircle size={24} />
+          className="group flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-blue-400 text-white shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(59,130,246,0.7)]">
+          <MessageCircle size={26} className="transition-transform duration-300 group-hover:-rotate-12" />
         </button>
       )}
 
