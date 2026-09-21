@@ -54,13 +54,13 @@ export default function AurexChat() {
           type="button"
           onClick={() => setOpen(true)}
           aria-label="Abrir asistente AurexCode"
-          className="group flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-blue-400 text-white shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(59,130,246,0.7)]">
+          className="group flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-br from-blue-600 to-blue-400 text-white shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(59,130,246,0.7)]">
           <MessageCircle size={26} className="transition-transform duration-300 group-hover:-rotate-12" />
         </button>
       )}
 
       {open && (
-        <div className="flex h-[600px] w-[380px] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-950/95 shadow-2xl backdrop-blur-md">
+        <div className="flex h-150 w-95 max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-950/95 shadow-2xl backdrop-blur-md">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
             <div className="flex items-center gap-3">

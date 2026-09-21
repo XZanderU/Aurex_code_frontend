@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
+
 const Navbar = () => {
   const [scrolled, setScrolled] = React.useState(false);
 
@@ -31,7 +32,7 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 w-full z-[100] transition-all duration-500 border-b",
         scrolled
-          ? "bg-emerald-950/60 backdrop-blur-xl backdrop-saturate-150 border-white/10 py-4 shadow-lg"
+          ? "bg-blue-950/60 backdrop-blur-xl backdrop-saturate-150 border-white/10 py-4 shadow-lg"
           : "bg-transparent border-transparent py-6"
       )}
     >
