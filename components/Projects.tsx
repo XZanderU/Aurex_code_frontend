@@ -10,6 +10,8 @@ interface Project {
   category: string;
   desc: string;
   img: string;
+  video?: string;
+  actionText?: string;
   size: string;
   link: string;
 }
@@ -17,12 +19,13 @@ interface Project {
 const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "AI Recipes Generator",
-    category: "Fullstack / Cloud AI",
-    desc: "Aplicación que utiliza Claude 3 Sonnet para generar recetas basadas en ingredientes. Construida con React, TypeScript y desplegada en AWS Amplify.",
-    img: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?auto=format&fit=crop&w=1200&q=80",
+    title: "Aurex Assembly",
+    category: "SaaS / Gestión de Copropiedades",
+    desc: "Plataforma en la nube para asambleas. Automatiza el registro, calcula el quórum por coeficiente en tiempo real y genera actas electorales certificadas.",
+    img: "/tech/tech/Aurex-Assembly.PNG", // <- Aquí está la ruta de tu nueva imagen
+    actionText: "Ver Manual de Operación",
     size: "md:col-span-2 md:row-span-2",
-    link: "https://github.com/XZanderU",
+    link: "/wiki/aurex-assembly",
   },
   {
     id: 2,
@@ -79,7 +82,7 @@ const Projects = () => {
           </div>
           
           <p className="text-slate-400 max-w-sm text-lg md:text-right font-light">
-            Especializado en arquitecturas **.NET**, integración de **servicios AWS** y desarrollo frontend con **React y Nextjs**.
+            Especializado en arquitecturas **.NET**, integración de **servicios AWS** y desarrollo frontend con **React y Next.js**.
           </p>
         </div>
 
@@ -93,22 +96,33 @@ const Projects = () => {
               rel="noopener noreferrer"
               style={{ animationDelay: `${index * 100}ms` }}
               className={cn(
-                "relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-slate-900/20 backdrop-blur-md transition-all duration-500 hover:border-orange-500/30 animate-in fade-in slide-in-from-bottom-10 fill-mode-both",
+                "relative group overflow-hidden rounded-[2.5rem] border border-white/10 bg-blue-950/20 backdrop-blur-md transition-all duration-500 hover:border-orange-500/30 animate-in fade-in slide-in-from-bottom-10 fill-mode-both",
                 project.size
               )}
             >
-              {/* NEXT.JS IMAGE OPTIMIZED */}
-              <div className="absolute inset-0 -z-10">
-                <Image 
-                  src={project.img} 
-                  alt={project.title}
-                  fill
-                  className="object-cover grayscale brightness-[0.35] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110 transition-all duration-700 ease-in-out"
-                />
+              {/* MEDIA RENDER: VIDEO OR IMAGE */}
+              <div className="absolute inset-0 -z-10 bg-blue-950">
+                {project.video ? (
+                  <video
+                    src={project.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="h-full w-full object-cover grayscale brightness-[0.35] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110 transition-all duration-700 ease-in-out"
+                  />
+                ) : (
+                  <Image 
+                    src={project.img} 
+                    alt={project.title}
+                    fill
+                    className="object-cover grayscale brightness-[0.35] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110 transition-all duration-700 ease-in-out"
+                  />
+                )}
               </div>
 
               {/* OVERLAY GRADIENT */}
-              <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-900/20 to-transparent -z-10 opacity-80 group-hover:opacity-60 transition-opacity" />
+              <div className="absolute inset-0 bg-linear-to-t from-blue-950 via-blue-900/30 to-transparent -z-10 opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
 
               {/* CONTENT */}
               <div className="absolute inset-0 p-8 flex flex-col justify-end">
@@ -120,13 +134,13 @@ const Projects = () => {
                   {project.title}
                 </h3>
                 
-                <p className="text-slate-300/70 text-sm max-w-xs opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                <p className="text-slate-300/80 text-sm max-w-xs opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
                   {project.desc}
                 </p>
 
                 <div className="mt-6 flex items-center gap-2 text-white font-bold text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity delay-100">
                   <span className="h-px w-8 bg-orange-500 group-hover:w-12 transition-all duration-500"></span>
-                  Ver Repositorio
+                  {project.actionText || "Ver Repositorio"}
                 </div>
               </div>
             </a>
