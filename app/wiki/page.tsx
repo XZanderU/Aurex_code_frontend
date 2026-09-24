@@ -4,12 +4,12 @@ import { BookOpen, ArrowLeft } from "lucide-react";
 export default function Wiki() {
   return (
     <main className="min-h-screen bg-slate-950 bg-[url('/tu-imagen-de-fondo.jpg')] bg-cover bg-fixed bg-center text-slate-200">
-      <div className="min-h-screen bg-blue-950/80 backdrop-blur-sm px-6 py-12 md:px-20">
+      <div className="min-h-screen bg-blue-950/80 backdrop-blur-sm px-6 pt-32 pb-12 md:px-20">
         
         {/* Navegación superior */}
         <nav className="mb-12 flex items-center justify-between">
           <Link 
-            href="/#hero" 
+            href="/" 
             className="flex items-center gap-2 text-sm font-medium text-blue-400 transition hover:text-blue-300"
           >
             <ArrowLeft size={16} />

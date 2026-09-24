@@ -3,7 +3,7 @@ import { ArrowLeft, Bot, Activity, Terminal, Key, Cpu } from "lucide-react";
 
 export default function QAChatbotAI() {
   return (
-    <main className="min-h-screen bg-blue-950 text-slate-200 py-12 px-6 md:px-20">
+    <main className="min-h-screen bg-blue-950 text-slate-200 pt-32 pb-12 px-6 md:px-20">
       <div className="mx-auto max-w-4xl">
         <Link 
           href="/wiki" 
