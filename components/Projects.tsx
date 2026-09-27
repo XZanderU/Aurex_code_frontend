@@ -22,9 +22,9 @@ const PROJECTS: Project[] = [
     title: "Aurex Assembly",
     category: "SaaS / Gestión de Copropiedades",
     desc: "Plataforma en la nube para asambleas. Automatiza el registro, calcula el quórum por coeficiente en tiempo real y genera actas electorales certificadas.",
-    img: "/tech/tech/Aurex-Assembly.PNG", // <- Aquí está la ruta de tu nueva imagen
+    img: "/tech/tech/Aurex-Assembly.PNG",
     actionText: "Ver Manual de Operación",
-    size: "md:col-span-2 md:row-span-2",
+    size: "md:col-span-2 md:row-span-2", // Ocupa 2 columnas y 2 filas arriba a la izquierda
     link: "/wiki/aurex-assembly",
   },
   {
@@ -32,8 +32,8 @@ const PROJECTS: Project[] = [
     title: "User Management API",
     category: "Backend / .NET",
     desc: "API REST robusta desarrollada con C#, Entity Framework Core y SQLite para la gestión escalable de usuarios.",
-    img: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YyVDMyVCM2RpZ298ZW58MHx8MHx8fDA%3D",
-    size: "md:col-span-1 md:row-span-1",
+    img: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8yCVDMyVCM2RpZ298ZW58MHx8MHx8fDA%3D",
+    size: "md:col-span-1 md:row-span-1", // Llena la columna 3 de la fila 1
     link: "https://github.com/XZanderU"
   },
   {
@@ -42,7 +42,7 @@ const PROJECTS: Project[] = [
     category: "Frontend / React",
     desc: "Interfaz moderna y responsiva orientada a la conversión, desarrollada con React, JavaScript y Tailwind CSS.",
     img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-    size: "md:col-span-1 md:row-span-1",
+    size: "md:col-span-1 md:row-span-1", // Llena la columna 3 de la fila 2
     link: "https://virtual-r-lake.vercel.app/"
   },
   {
@@ -51,7 +51,7 @@ const PROJECTS: Project[] = [
     category: "UX / Motion Design",
     desc: "Plataforma personal de alto impacto visual utilizando animaciones fluidas y una estética premium.",
     img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
-    size: "md:col-span-2 md:row-span-1",
+    size: "md:col-span-1 md:row-span-1", // Ajustado a 1 columna para formar fila de 3 abajo
     link: "https://github.com/XZanderU"
   },
   {
@@ -60,8 +60,18 @@ const PROJECTS: Project[] = [
     category: "UX / Motion Design",
     desc: "Plataforma personal de alto impacto visual utilizando animaciones fluidas y una estética premium.",
     img: "https://images.unsplash.com/photo-1784729553996-1cdaf53711a4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    size: "md:col-span-2 md:row-span-1",
+    size: "md:col-span-1 md:row-span-1", // Ajustado a 1 columna (al lado del portafolio)
     link: "https://social-media-manager-rosy.vercel.app/"
+  },
+  {
+    id: 6,
+    title: "Aurex Billing & Pagos",
+    category: "Arquitectura / FinTech SaaS",
+    desc: "Sistema de pagos distribuidos con aislamiento de microfrontends, validación criptográfica SHA-256 y seguridad RLS en Supabase.",
+    img: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80",
+    actionText: "Ver Arquitectura",
+    size: "md:col-span-1 md:row-span-1", // Ajustado a 1 columna (cierra la fila de 3 perfectamente al lado del anterior)
+    link: "/wiki/aurex-billing",
   }
 ];
 
@@ -100,25 +110,14 @@ const Projects = () => {
                 project.size
               )}
             >
-              {/* MEDIA RENDER: VIDEO OR IMAGE */}
+              {/* MEDIA RENDER */}
               <div className="absolute inset-0 -z-10 bg-blue-950">
-                {project.video ? (
-                  <video
-                    src={project.video}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="h-full w-full object-cover grayscale brightness-[0.35] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110 transition-all duration-700 ease-in-out"
-                  />
-                ) : (
-                  <Image 
-                    src={project.img} 
-                    alt={project.title}
-                    fill
-                    className="object-cover grayscale brightness-[0.35] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110 transition-all duration-700 ease-in-out"
-                  />
-                )}
+                <Image 
+                  src={project.img} 
+                  alt={project.title}
+                  fill
+                  className="object-cover grayscale brightness-[0.35] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110 transition-all duration-700 ease-in-out"
+                />
               </div>
 
               {/* OVERLAY GRADIENT */}
