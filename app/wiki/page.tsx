@@ -59,6 +59,15 @@ export default function Wiki() {
                  Guía de operación y arquitectura de la plataforma de gestión de asambleas por coeficiente.
                 </p>
             </Link>
+
+            <Link href="/wiki/aurex-billing" className="group rounded-xl border border-white/10 bg-white/5 p-5 transition hover:border-blue-500/50 hover:bg-white/10">
+              <h2 className="mb-2 text-lg font-semibold text-blue-100 group-hover:text-blue-400">
+                Pagos Distribuidos SaaS (Aurex Billing)
+              </h2>
+              <p className="text-sm text-slate-400">
+                Arquitectura de microservicios, seguridad con RLS, firmas SHA-256 y validación anti-spoofing en webhooks de Wompi.
+              </p>
+            </Link>
           </div>
         </div>
 
