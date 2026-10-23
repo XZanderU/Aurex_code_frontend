@@ -75,7 +75,7 @@ const pasos = [
       "Carga el padrón de propietarios (Torre, Apartamento, Coeficiente).",
       "En la pestaña “3. Intervenciones”, pega el enlace de Zoom o Meet para la transmisión.",
     ],
-    img: { src: "/img/aurex-assembly/importar-propietarios.png", alt: "Pantalla para importar propietarios desde un archivo de Excel en Aurex Assembly", w: 1920, h: 922 },
+    img: { src: "/Aurex_Assembly/Importar Propietarios.PNG", alt: "Pantalla para importar propietarios desde un archivo de Excel en Aurex Assembly", w: 1920, h: 922 },
   },
   {
     titulo: "Durante el registro (check-in)",
@@ -84,7 +84,7 @@ const pasos = [
       "El sistema genera un PIN de 4 dígitos que entregas al propietario.",
       "El propietario ingresa al portal con su apartamento y el PIN asignado.",
     ],
-    img: { src: "/img/aurex-assembly/sala-padron.png", alt: "Sala de control de Aurex Assembly con el padrón, el PIN de cada propietario, el coeficiente y el quórum", w: 1908, h: 919 },
+    img: { src: "/Aurex_Assembly/Sala de control (asamblea).PNG", alt: "Sala de control de Aurex Assembly con el padrón, el PIN de cada propietario, el coeficiente y el quórum", w: 1908, h: 919 },
   },
   {
     titulo: "Lanzar votaciones",
@@ -94,7 +94,7 @@ const pasos = [
       "Las pantallas de los propietarios cambian automáticamente y el quórum se calcula en vivo.",
       "Presiona Cerrar Votación para sellar los resultados.",
     ],
-    img: { src: "/img/aurex-assembly/sala-votaciones.png", alt: "Pestaña de votaciones en vivo de la sala de control con el botón Abrir Votación y los resultados", w: 1885, h: 876 },
+    img: { src: "/Aurex_Assembly/Votaciones (sala de control).PNG", alt: "Pestaña de votaciones en vivo de la sala de control con el botón Abrir Votación y los resultados", w: 1885, h: 876 },
   },
   {
     titulo: "Moderación del debate",
@@ -103,7 +103,7 @@ const pasos = [
       "Haz clic en Dar Palabra para avisarle que puede encender su micrófono en Zoom o Meet.",
       "Al terminar, marca Terminar Intervención para avanzar al siguiente.",
     ],
-    img: { src: "/img/aurex-assembly/sala-intervenciones.png", alt: "Cola de peticiones de palabra y enlace de transmisión de Zoom o Meet en la sala de control", w: 1920, h: 927 },
+    img: { src: "/Aurex_Assembly/Intervenciones (sala de control).PNG", alt: "Cola de peticiones de palabra y enlace de transmisión de Zoom o Meet en la sala de control", w: 1920, h: 927 },
   },
 ];
 
@@ -211,7 +211,7 @@ const SoftwareAsambleasLanding = () => {
         {/* Captura principal */}
         <section className="mb-16 max-w-5xl mx-auto">
           <Shot
-            src="/img/aurex-assembly/sala-padron.png"
+            src="/Aurex_Assembly/Sala de control (asamblea).PNG"
             alt="Sala de control de Aurex Assembly con padrón de propietarios, coeficientes y quórum en tiempo real"
             width={1908}
             height={919}
@@ -377,7 +377,7 @@ const SoftwareAsambleasLanding = () => {
           <div className="grid md:grid-cols-[320px_1fr] gap-8 items-center">
             <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl max-w-xs mx-auto w-full">
               <Image
-                src="/img/aurex-assembly/ingreso-propietario.png"
+                src="/Aurex_Assembly/Ingreso Votaciones Propietario.PNG"
                 alt="Portal de ingreso de copropietarios con número de apartamento y PIN de acceso"
                 width={450}
                 height={554}
@@ -387,7 +387,7 @@ const SoftwareAsambleasLanding = () => {
             </div>
             <div>
               <Shot
-                src="/img/aurex-assembly/pantalla-propietario.png"
+                src="/Aurex_Assembly/Interfaz de votaciones propietario.PNG"
                 alt="Pantalla del propietario con el botón Pedir la palabra, estado de espera de votación y su coeficiente"
                 width={1919}
                 height={918}
@@ -421,9 +421,9 @@ const SoftwareAsambleasLanding = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { src: "/img/aurex-assembly/configurar-conjunto.png", w: 1920, h: 914, titulo: "Registra el conjunto", desc: "Nombre, NIT opcional y total de unidades de la copropiedad.", alt: "Formulario para registrar un conjunto residencial en Aurex Assembly" },
-              { src: "/img/aurex-assembly/crear-asamblea.png", w: 1920, h: 923, titulo: "Programa la asamblea", desc: "Elige tipo (ordinaria o extraordinaria), modalidad, fecha y hora.", alt: "Formulario para programar una nueva asamblea con tipo, modalidad, fecha y hora" },
-              { src: "/img/aurex-assembly/mis-asambleas.png", w: 1920, h: 919, titulo: "Entra a la sala de control", desc: "Gestiona las reuniones de tu copropiedad desde un solo lugar.", alt: "Listado Mis Asambleas con el acceso a la sala de control" },
+              { src: "/Aurex_Assembly/Configurar conjunto.PNG", w: 1920, h: 914, titulo: "Registra el conjunto", desc: "Nombre, NIT opcional y total de unidades de la copropiedad.", alt: "Formulario para registrar un conjunto residencial en Aurex Assembly" },
+              { src: "/Aurex_Assembly/Crear asamblea.PNG", w: 1920, h: 923, titulo: "Programa la asamblea", desc: "Elige tipo (ordinaria o extraordinaria), modalidad, fecha y hora.", alt: "Formulario para programar una nueva asamblea con tipo, modalidad, fecha y hora" },
+              { src: "/Aurex_Assembly/Mis asambleas.PNG", w: 1920, h: 919, titulo: "Entra a la sala de control", desc: "Gestiona las reuniones de tu copropiedad desde un solo lugar.", alt: "Listado Mis Asambleas con el acceso a la sala de control" },
             ].map((card, i) => (
               <a key={i} href={card.src} target="_blank" rel="noopener noreferrer" className="group block bg-slate-900/50 border border-white/5 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-colors">
                 <Image src={card.src} alt={card.alt} width={card.w} height={card.h} sizes="(min-width: 768px) 360px, 100vw" className="w-full h-auto border-b border-white/5" />
