@@ -1,15 +1,22 @@
-import { MetadataRoute } from "next";
+
+import type { MetadataRoute } from "next";
+
+const baseUrl = "https://aurexcode.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://aurexcode.com";
-
-  return [
-    {
-      url: baseUrl,
-      // Usamos una fecha fija o la fecha de última actualización real del código
-      lastModified: new Date("2024-05-20"), 
-      changeFrequency: "monthly",
-      priority: 1,
-    },
+  const routes = [
+    "",
+    "/servicios/automatizacion-onboarding",
+    "/servicios/facturacion-dian",
+    "/servicios/pagos-instantaneos",
+    "/servicios/software-asambleas-propiedad-horizontal",
   ];
+
+  return routes.map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified:
+      route === "" ? new Date("2024-05-20") : new Date(),
+    changeFrequency: "monthly",
+    priority: route === "" ? 1 : 0.8,
+  }));
 }
