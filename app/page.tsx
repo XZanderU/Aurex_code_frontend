@@ -1,10 +1,11 @@
 import Hero from "@/components/Inicio"; // Asegúrate de que el archivo se llame Inicio.tsx
-import Services from "@/components/Services";
+// import Services from "@/components/Services";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Services from "@/components/Newservices";
 
 export default function Home() {
   return (
