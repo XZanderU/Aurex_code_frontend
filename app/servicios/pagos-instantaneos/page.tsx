@@ -56,7 +56,14 @@ const PagosInstantaneosLanding = () => {
         });
       }
 
-      setStatus({ loading: false, success: "¡Guía enviada con éxito a tu correo!", error: null });
+      // Abre el PDF en una pestaña nueva automáticamente
+      window.open("/guias/blueprint-wompi.pdf", "_blank");
+
+      setStatus({ 
+        loading: false, 
+        success: "¡Guía desbloqueada! Si no se abrió automáticamente, revisa las ventanas emergentes de tu navegador.", 
+        error: null 
+      });
       setFormData({ nombre: "", correo: "", empresa: "" });
     } catch (err) {
       setStatus({ loading: false, success: null, error: "No se pudo procesar la solicitud." });
@@ -72,7 +79,7 @@ const PagosInstantaneosLanding = () => {
           <ArrowLeft size={16} /> Volver al Inicio
         </Link>
 
-        {/* HERO Y SECCIONES OMITIDAS POR BREVEDAD (Es el mismo contenido de arriba) */}
+        {/* HERO SECTION */}
         <section className="text-center mb-24 max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-400 mb-6">
             <Zap size={16} /> Solución FinTech B2B
@@ -86,12 +93,12 @@ const PagosInstantaneosLanding = () => {
         </section>
 
         {/* LEAD CAPTURE FORM */}
-        <section id="lead-magnet" className="max-w-3xl mx-auto bg-slate-900 p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden">
+        <section id="lead-magnet" className="max-w-3xl mx-auto bg-slate-900 p-8 md:p-12 rounded-3xl border border-white/10 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-32 bg-blue-500/10 blur-[80px] rounded-full pointer-events-none" />
           
           <div className="text-center mb-8 relative z-10">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Descarga el Blueprint de Integración</h2>
-            <p className="text-slate-400 text-sm md:text-base">Déjanos tu correo corporativo y recibe de inmediato nuestra guía técnica.</p>
+            <p className="text-slate-400 text-sm md:text-base">Déjanos tu correo corporativo y recibe de inmediato nuestra guía técnica detallando cómo estructuramos el bypass de RLS y la validación anti-spoofing con Wompi.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="relative z-10 space-y-4">
@@ -105,8 +112,8 @@ const PagosInstantaneosLanding = () => {
               <Download size={18} /> {status.loading ? "Procesando..." : "Obtener Guía Gratuita"}
             </button>
 
-            {status.success && <p className="text-blue-400 text-sm font-bold text-center mt-2">{status.success}</p>}
-            {status.error && <p className="text-red-400 text-sm font-bold text-center mt-2">{status.error}</p>}
+            {status.success && <p className="text-blue-400 text-sm font-bold text-center mt-4">{status.success}</p>}
+            {status.error && <p className="text-red-400 text-sm font-bold text-center mt-4">{status.error}</p>}
           </form>
         </section>
       </div>
