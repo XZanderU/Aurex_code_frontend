@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Zap, FileCheck, Cpu, ArrowRight } from "lucide-react";
+import { Zap, FileCheck, Cpu, ArrowRight, Building2 } from "lucide-react";
 
 const SERVICES = [
   {
@@ -28,7 +28,15 @@ const SERVICES = [
     icon: Cpu,
     link: "/servicios/automatizacion-onboarding",
     badge: "Microservicios",
-  }
+  },
+  {
+  id: "software-asambleas-propiedad-horizontal",
+  title: "Aurex Assembly | Gestión Digital de Asambleas",
+  desc: "Digitaliza las asambleas de propiedad horizontal con registro de asistentes, gestión de poderes, control de quórum por coeficientes, votaciones y generación de actas con resultados trazables.",
+  icon: Building2,
+  link: "servicios/software-asambleas-propiedad-horizontal",
+  badge: "Propiedad Horizontal",
+}
 ];
 
 const Services = () => {
