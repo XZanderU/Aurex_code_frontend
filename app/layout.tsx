@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
-// @ts-expect-error Next.js types declarations for CSS side-effect imports are not currently loaded by the language server.
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Aurexchat from "@/components/Aurexchat";

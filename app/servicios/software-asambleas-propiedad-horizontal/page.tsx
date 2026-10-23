@@ -134,6 +134,33 @@ const faqs = [
   },
 ];
 
+/* Datos estructurados: el FAQPage se genera desde el mismo arreglo que se muestra en pantalla */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      name: "Aurex Assembly",
+      url: "https://aurex-assembly.vercel.app/",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      inLanguage: "es-CO",
+      countriesSupported: "CO",
+      description:
+        "Software en la nube para asambleas de propiedad horizontal en Colombia: check-in con PIN, quórum por coeficiente en tiempo real, votaciones en vivo, cola de palabra y acta en Excel.",
+      provider: { "@type": "Organization", name: "AurexCode" },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
+
 const SoftwareAsambleasLanding = () => {
   const [formData, setFormData] = React.useState({ nombre: "", correo: "", empresa: "", telefono: "" });
   const [status, setStatus] = React.useState({ loading: false, success: null as string | null, error: null as string | null });
@@ -174,6 +201,10 @@ const SoftwareAsambleasLanding = () => {
 
   return (
     <main className="min-h-screen bg-blue-950 text-slate-200 pt-32 pb-20 px-6 md:px-20 relative overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+      />
       {/* Luz ambiental Azul */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] bg-blue-600/15 blur-[140px] rounded-full -z-10 pointer-events-none" />
 
@@ -192,7 +223,7 @@ const SoftwareAsambleasLanding = () => {
             Aurex Assembly · Software para asambleas de copropietarios en Colombia
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight tracking-tight">
-            Asambleas de propiedad horizontal sin filas ni planillas y <br className="hidden md:inline" />
+            Software para asambleas de propiedad horizontal sin filas ni planillas y <br className="hidden md:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-300">con acta automática</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto font-light">
